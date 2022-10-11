@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin
 public class ChatController {
 
-    @Autowired
-    private SimpMessagingTemplate messagingTemplate;
+    private final SimpMessagingTemplate messagingTemplate;
+
+    public ChatController(SimpMessagingTemplate messagingTemplate) {
+        this.messagingTemplate = messagingTemplate;
+    }
 
     @MessageMapping("/chat")
     //@SendTo("/topic")
